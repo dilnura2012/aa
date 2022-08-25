@@ -1,0 +1,71 @@
+fun main() {
+
+    val scanner = Scanner(System.`in`)
+    val random = Random()
+    val userList: ArrayList<User> = ArrayList<User>()
+    var countT = 0
+    var countF = 0
+
+    while (true) {
+        println("Game start -> 1")
+        println("Rating -> 2")
+        println("User Info -> 3")
+        println("Quit -> 4")
+        print("= ")
+        val n = scanner.nextInt()
+        when (n) {
+            1 -> {
+                println("Game")
+                println("Name write: ")
+                val name = scanner.next()
+                for (i in 1 until 5) {
+                    val number1 = random.nextInt(20)
+                    val number2 = random.nextInt(10)
+                   val number3= random.nextInt(4)
+                    var res = 0
+                    when (number3) {
+                        0 -> {
+                            res = number1 + number2
+                            print("$number1 + $number2 =")
+                        }
+                        1 -> {
+                            res = number1 - number2
+                            print("$number1 - $number2 =")
+                        }
+                        2 -> {
+                            res = number1 * number2
+                            print("$number1 * $number2 =")
+                        }
+                        3 -> {
+                            res = number1 / number2
+                            print("$number1 / $number2 =")
+                        }
+                    }
+                    val number = scanner.nextInt()
+                    if (n == res) {
+                        countT++
+                    } else
+                        countF++
+                }
+                userList.add(User(name, countT, countF))
+            }
+            2 -> {
+
+            }
+            3 -> {
+
+            }
+            4 -> {
+
+            }
+            5 -> {
+                for (i in userList.distinct()) {
+                    println("${i.name} ${i.countT} ${i.countF}")
+                }
+            }
+
+        }
+    }
+}
+
+data class User(val name: String, val countT: Int, val countF: Int)
